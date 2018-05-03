@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-  return 'Hello, World!'
+    return 'Hello, World!'
 
 @app.route('/response', methods=['POST'])
 def print_data():
@@ -21,4 +21,4 @@ def print_data():
 
 
 if __name__ == '__main__':
-  app.run()
+    app.run()
