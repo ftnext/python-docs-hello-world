@@ -1,4 +1,5 @@
 import json
+from platform import python_version
 
 from flask import Flask
 from flask import jsonify
@@ -9,7 +10,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    return 'Hello, World!'
+    sentence = 'Hello, World! This is Python {}'
+    return sentence.format(python_version())
 
 @app.route('/response', methods=['POST'])
 def print_data():
