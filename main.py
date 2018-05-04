@@ -1,4 +1,6 @@
 import json
+import logging
+from logging.handlers import RotatingFileHandler
 
 from flask import Flask
 from flask import jsonify
@@ -6,6 +8,10 @@ from flask import request
 
 
 app = Flask(__name__)
+handler = RotatingFileHandler('app.log', maxBytes=10000, backupCount=1)
+log = logging.getLogger('werkzeug')
+log.setLevel(logging.INFO)
+log.addHandler(handler)
 
 @app.route('/')
 def hello_world():
