@@ -9,9 +9,11 @@ from flask import request
 
 app = Flask(__name__)
 handler = RotatingFileHandler('app.log', maxBytes=10000, backupCount=1)
-log = logging.getLogger('werkzeug')
-log.setLevel(logging.INFO)
-log.addHandler(handler)
+handler.setLevel(logging.INFO) # INFOより上のレベルを表示するらしい
+formatter = logging.Formatter(
+    "[%(asctime)s] {%(pathname)s:%(lineno)d} %(levelname)s - %(message)s")
+handler.setFormatter(formatter)
+app.logger.addHandler(handler)
 
 @app.route('/')
 def hello_world():
