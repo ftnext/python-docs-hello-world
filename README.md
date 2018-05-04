@@ -3,8 +3,8 @@
 1. Add Extension at Azure Portal
 1. Add .skipPythonDeployment in the repository (manual deployment is needed)
 1. Update web.3.4.config (or web.2.7.config)
-  - rename to web.config
-  - change python path in handlers section
+    - rename to web.config
+    - change python path in handlers section
 1. Deploy (`git push azure ...`)
 1. Manually install at Kudu Console (for example: `\home\Python364x64\python.exe -m pip install --upgrade -r D:\home\site\wwwroot\requirements.txt`)
 
