@@ -1,3 +1,11 @@
+# How to see stack trace of Flask application on Azure WebApps
+
+Use `logger` in Flask application. (NOTE: There is a time lag before the log is written)
+
+You don't have to change any settings of WebApps at Azure Portal.
+
+---
+
 # Python Flask app on Azure App Service Web
 
 This is a minimal sample app that demonstrates how to run a Python Flask application on Azure App Service Web.
