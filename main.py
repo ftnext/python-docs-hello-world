@@ -1,6 +1,7 @@
 import json
 import logging
 from logging.handlers import RotatingFileHandler
+import os
 
 from flask import Flask
 from flask import jsonify
@@ -8,7 +9,8 @@ from flask import request
 
 
 app = Flask(__name__)
-handler = RotatingFileHandler('app.log', maxBytes=10000, backupCount=1)
+log_file_path = os.environ['MY_FLASK_LOG']
+handler = RotatingFileHandler(log_file_path, maxBytes=10000, backupCount=1)
 handler.setLevel(logging.INFO) # INFOより上のレベルを表示するらしい
 formatter = logging.Formatter(
     "[%(asctime)s] {%(pathname)s:%(lineno)d} %(levelname)s - %(message)s")
