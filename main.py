@@ -23,7 +23,7 @@ def hello_world():
 
 @app.route('/response', methods=['POST'])
 def print_data():
-    parsed = json.loads(request.data)
+    parsed = request.get_json()
     # TODO: parsedをログに出力
     response = jsonify({'foo': 'bar'})
     response.status_code = 200
