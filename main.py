@@ -15,6 +15,7 @@ handler.setLevel(logging.INFO) # INFOより上のレベルを表示するらし�
 formatter = logging.Formatter(
     "[%(asctime)s] {%(pathname)s:%(lineno)d} %(levelname)s - %(message)s")
 handler.setFormatter(formatter)
+app.logger.setLevel(logging.INFO) # app.run(debug=False)でinfo以下のログを出すために必要らしい
 app.logger.addHandler(handler)
 
 @app.route('/')
@@ -24,7 +25,7 @@ def hello_world():
 @app.route('/response', methods=['POST'])
 def print_data():
     parsed = request.get_json()
-    # TODO: parsedをログに出力
+    app.logger.info(json.dumps(parsed, indent=2))
     response = jsonify({'foo': 'bar'})
     response.status_code = 200
     return response
